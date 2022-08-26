@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import reynassha.labs.springdemo.dto.CustomerDTO;
 import reynassha.labs.springdemo.entity.Customer;
+import reynassha.labs.springdemo.exception.CustomerNotFoundException;
 import reynassha.labs.springdemo.service.CustomerService;
 @RestController
 @RequestMapping("/customer")
@@ -25,18 +26,15 @@ public class CustomerController {
         super();
         this.service = service;
     }
-   
- 
-   
-    
+      
     @PostMapping("/create")
     public Customer addPerson(@RequestBody Customer person) {
         return this.service.addPerson(person);
     }
 
-    @GetMapping("/readbyid")
+    @GetMapping("/read")
     public void readOne(@PathParam("id") Long id) {
-    	System.out.println(id);
+    	this.service.readById(id);;
     }
     
     @GetMapping("/getAll")

@@ -36,7 +36,7 @@ public class CustomerService {
 	        return this.repo.findAll();
 	    }
 	    
-	    public CustomerDTO readOne(Long id) {
+	    public CustomerDTO readById(Long id) {
 	        Customer found = this.repo.findById(id).orElseThrow(CustomerNotFoundException::new);
 	        return this.mapToDTO(found);
 	    }
