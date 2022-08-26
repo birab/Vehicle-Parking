@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 	public class Customer {
 			    @Id
 			    @GeneratedValue(strategy = GenerationType.IDENTITY)
-			    private long id;
+			    private Long id;
 
 			    @Column(unique = true, nullable = false)
 			    private String customer_name;
@@ -29,10 +29,11 @@ import lombok.NoArgsConstructor;
 			    // Default constructor
 			 
 
-			    public Customer(String customer_name, String vehicle_no, String vehicle_make, String vehicle_color) {
+			    public Customer(Long id, String customer_name, String vehicle_no, String vehicle_make, String vehicle_color) {
 			    	
 			    	super();  
-			    	 
+			    	
+			    	this.id = id;
 			        this.customer_name = customer_name;
 			        this.vehicle_no =  vehicle_no;
 			        this.vehicle_make = vehicle_make;

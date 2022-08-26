@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import reynassha.labs.springdemo.dto.CustomerDTO;
 import reynassha.labs.springdemo.entity.Customer;
 import reynassha.labs.springdemo.service.CustomerService;
 @RestController
+@RequestMapping("/customer")
 public class CustomerController {
 	private CustomerService service;
 
@@ -24,11 +26,19 @@ public class CustomerController {
         this.service = service;
     }
    
+ 
+   
+    
     @PostMapping("/create")
     public Customer addPerson(@RequestBody Customer person) {
         return this.service.addPerson(person);
     }
 
+  //  @GetMapping("/readbyid")
+    //public void readOne(@PathParam("id") Long id) {
+   // System.out.println(id);
+   // }
+    
     @GetMapping("/getAll")
     public List<Customer> getAllPeople() {
         return this.service.getAllPeople();
@@ -36,7 +46,7 @@ public class CustomerController {
 
     @PutMapping("/update")
     public CustomerDTO updatePerson(@PathParam("id") Long id, @RequestBody Customer person) {
-        return this.service.updatePerson(id, person);
+        return this.service.updateCustomer(id, person);
     }
 
     @DeleteMapping("/delete/{id}")

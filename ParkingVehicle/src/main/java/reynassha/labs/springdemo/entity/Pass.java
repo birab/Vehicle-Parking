@@ -18,9 +18,9 @@ import lombok.NoArgsConstructor;
 	public class Pass {
 			    @Id
 			    @GeneratedValue(strategy = GenerationType.IDENTITY)
-			    private long id;
+			    private Long id;
 
-			    @Column(unique = true, nullable = false)
+			    @Column(unique = true)
 			    private int customer_id;
 			    @Column 
 			    private LocalDateTime   purchase_date;
@@ -34,10 +34,11 @@ import lombok.NoArgsConstructor;
 			    // Default constructor
 			 
 
-			    public Pass(int customer_id, LocalDateTime purchase_date, LocalDateTime start_date, int duration, int cost) {
+			    public Pass(Long id, int customer_id, LocalDateTime purchase_date, LocalDateTime start_date, int duration, int cost) {
 			    	
 			    	super();  
 			    	 
+			    	this.id = id;
 			        this.customer_id = customer_id;
 			        this.purchase_date =  purchase_date;
 			        this.start_date = start_date;
@@ -45,9 +46,6 @@ import lombok.NoArgsConstructor;
 			         this.cost = cost;
 			        
 			    }
-
-			    
-			    
-				}
+	}
 
 

@@ -8,6 +8,10 @@ import reynassha.labs.springdemo.entity.Customer;
 
 	@Repository
 	public interface CustomerRepo extends JpaRepository<Customer, Long> {
+		
+		
+		
+		
 //		@Query("SELECT p from Person p WHERE p.name = ?1")
 			//	List<Person>findPersonBYNameJPQL(String name);
 		

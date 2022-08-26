@@ -23,15 +23,15 @@ import reynassha.labs.springdemo.service.CustomerService;
 
 	    @Test
 	    void testCreate() {
-	    	final Customer TEST_CUSTOMER = new Customer( "Kathy Shrestha", "DX63LGK", "Toyota", "Blue");
-	   	    final Customer TEST_SAVED_CUSTOMER = new Customer("Kathy Shrestha", "DX63LGK", "Toyota", "Blue");
+	    	final Customer TEST_CUSTOMER = new Customer( null, "Kathy Shrestha", "LK45TYD", "Toyota", "Blue");
+	   	    final Customer TEST_SAVED_CUSTOMER = new Customer(8L, "Kathy Shrestha", "LK45TYD", "Toyota", "Blue");
 	    	     	   
 	    
 	    	    // WHEN
 	    	    Mockito.when(this.repo.save(TEST_CUSTOMER)).thenReturn(TEST_SAVED_CUSTOMER);
 
 	    	    // THEN
-	    	    Assertions.assertThat(this.service.addCUSTOMER(TEST_CUSTOMER)).isEqualTo(TEST_SAVED_CUSTOMER);
+	    	    Assertions.assertThat(this.service.addPerson(TEST_CUSTOMER)).isEqualTo(TEST_SAVED_CUSTOMER);
 
 	    	    // verify that our repo was accessed exactly once
 	    	    Mockito.verify(this.repo, Mockito.times(1)).save(TEST_CUSTOMER);

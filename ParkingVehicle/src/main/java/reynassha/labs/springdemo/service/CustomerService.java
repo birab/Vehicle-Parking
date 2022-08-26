@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import reynassha.labs.springdemo.dto.CustomerDTO;
 import reynassha.labs.springdemo.entity.Customer;
+import reynassha.labs.springdemo.exception.CustomerNotFoundException;
 import reynassha.labs.springdemo.repo.CustomerRepo;
 
 @Service
@@ -21,29 +22,34 @@ public class CustomerService {
 	        this.mapper = mapper;
 	    }
 	  
-	  private CustomerDTO mapToDTO(Customer person) {
+	  private CustomerDTO mapToDTO(Customer customer) {
 		 
-		  return this.mapper.map(person, CustomerDTO.class);
+		  return this.mapper.map(customer, CustomerDTO.class);
 	  }
 	  
-	  public Customer addPerson(Customer person) {
-	        Customer saved =  this.repo.save(person);
+	  public Customer addPerson(Customer customer) {
+	        Customer saved =  this.repo.save(customer);
 	        return (saved);
 	    }
 
 	    public List<Customer> getAllPeople() {
 	        return this.repo.findAll();
 	    }
-	  
 	    
-	    public CustomerDTO updatePerson(Long id, Customer newPerson) {
+	    public CustomerDTO readOne(Long id) {
+	        Customer found = this.repo.findById(id).orElseThrow(CustomerNotFoundException::new);
+	        return this.mapToDTO(found);
+	    }
+	  //ById
+	    
+	    public CustomerDTO updateCustomer(Long id, Customer newCustomer) {
 	        Optional<Customer> existingOptional = this.repo.findById(id);
 	        Customer existing = existingOptional.get();
 
-	        existing.setCustomer_name(newPerson.getCustomer_name());
-	        existing.setVehicle_no(newPerson.getVehicle_no());
-	        existing.setVehicle_make(newPerson.getVehicle_make());
-	        existing.setVehicle_color(newPerson.getVehicle_color());
+	        existing.setCustomer_name(newCustomer.getCustomer_name());
+	        existing.setVehicle_no(newCustomer.getVehicle_no());
+	        existing.setVehicle_make(newCustomer.getVehicle_make());
+	        existing.setVehicle_color(newCustomer.getVehicle_color());
 
 	        Customer updated = this.repo.save(existing);
 	        return this.mapToDTO(updated);
