@@ -34,7 +34,7 @@ public class CustomerController {
 
     @GetMapping("/read")
     public void readOne(@PathParam("id") Long id) {
-    	this.service.readById(id);;
+    	this.service.readById(id);
     }
     
     @GetMapping("/getAll")
