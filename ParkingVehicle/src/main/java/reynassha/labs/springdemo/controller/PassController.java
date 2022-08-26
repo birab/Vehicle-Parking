@@ -26,6 +26,11 @@ public class PassController {
         super();
         this.service = service;
     }
+    
+    @GetMapping("/readbyid")
+    public PassDTO readOne(@PathParam("id") Long id) {
+    	  	return this.service.readOne(id);
+    }
    
     @PostMapping("/create")
     public Pass addPerson(@RequestBody Pass person) {

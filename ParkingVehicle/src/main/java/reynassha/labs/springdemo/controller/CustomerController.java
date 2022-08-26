@@ -34,10 +34,10 @@ public class CustomerController {
         return this.service.addPerson(person);
     }
 
-  //  @GetMapping("/readbyid")
-    //public void readOne(@PathParam("id") Long id) {
-   // System.out.println(id);
-   // }
+    @GetMapping("/readbyid")
+    public void readOne(@PathParam("id") Long id) {
+    	System.out.println(id);
+    }
     
     @GetMapping("/getAll")
     public List<Customer> getAllPeople() {

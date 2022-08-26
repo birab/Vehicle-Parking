@@ -7,7 +7,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import reynassha.labs.springdemo.dto.PassDTO;
+import reynassha.labs.springdemo.entity.Customer;
 import reynassha.labs.springdemo.entity.Pass;
+import reynassha.labs.springdemo.exception.CustomerNotFoundException;
+import reynassha.labs.springdemo.exception.PassNotFoundException;
 import reynassha.labs.springdemo.repo.PassRepo;
 
 @Service
@@ -34,6 +37,11 @@ public class PassService {
 
 	    public List<Pass> getAllPeople() {
 	        return this.repo.findAll();
+	    }
+	  
+	    public PassDTO readOne(Long id) {
+	        Pass found = this.repo.findById(id).orElseThrow(PassNotFoundException::new);
+	        return this.mapToDTO(found);
 	    }
 	  
 	    

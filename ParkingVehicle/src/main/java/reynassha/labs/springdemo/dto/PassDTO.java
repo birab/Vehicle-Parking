@@ -37,19 +37,19 @@ public void setCustomerid(int customer_id) {
    this.customer_id = customer_id;
 }
 
-public LocalDateTime  getDate() {
+public LocalDateTime  getPurchase_date() {
     return purchase_date;
 }
 
-public void setDate(LocalDateTime purchase_date) {
+public void setPurchase_date(LocalDateTime purchase_date) {
    this.purchase_date = purchase_date;
 }
 
-public  LocalDateTime getStartdate() {
+public  LocalDateTime getStart_date() {
     return start_date;
 }
 
-public void setStartdate(LocalDateTime start_date) {
+public void setStart_date(LocalDateTime start_date) {
     this.start_date = start_date;
 
 }
